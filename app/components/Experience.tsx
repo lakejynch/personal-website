@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { experience } from "@/content/experience";
@@ -15,7 +14,12 @@ export function Experience() {
 
   return (
     <div ref={ref} className="relative pb-2">
-      <svg className="pointer-events-none absolute left-3 top-0 h-full w-4" viewBox="0 0 8 1000" preserveAspectRatio="none">
+      {/* Animated vertical timeline line */}
+      <svg
+        className="pointer-events-none absolute left-3 top-0 h-full w-4"
+        viewBox="0 0 8 1000"
+        preserveAspectRatio="none"
+      >
         <motion.line
           x1="4"
           y1="0"
@@ -29,33 +33,61 @@ export function Experience() {
         />
       </svg>
 
-      <div className="space-y-8">
+      <div className="space-y-10">
         {experience.map((item) => (
-          <article key={`${item.company}-${item.years}`} className="relative grid gap-3 pl-10 md:grid-cols-[220px_1fr] md:gap-6">
-            <div>
-              <p className="font-meta text-[11px] text-[var(--text-muted)]">{item.years}</p>
-              {item.logoFile ? (
-                <div className="relative mt-2 h-8 w-36 opacity-90">
-                  <Image src={`/logos/${item.logoFile}`} alt={`${item.company} logo`} fill className="object-contain object-left" />
+          <article
+            key={`${item.company}-${item.years}`}
+            className="relative grid gap-4 pl-10 md:grid-cols-[200px_1fr] md:gap-8"
+          >
+            {/* Left column: date, logo, company name */}
+            <div className="space-y-2">
+              <p className="font-meta text-[11px] text-[var(--text-muted)]">
+                {item.years}
+              </p>
+
+              {item.logoFile && (
+                <div className="mt-1">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={`/logos/${item.logoFile}`}
+                    alt={`${item.company} logo`}
+                    className="h-7 w-auto max-w-[140px] object-contain object-left opacity-90"
+                  />
                 </div>
-              ) : null}
-              <div className="mt-2 flex items-center gap-2">
-                {item.current ? <span className="pulse-dot" /> : null}
+              )}
+
+              <div className="flex items-center gap-2">
+                {item.current && <span className="pulse-dot" />}
                 {item.url ? (
-                  <a href={item.url} target="_blank" rel="noreferrer" className="text-sm text-[var(--text-primary)] underline-offset-4 hover:underline">
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm text-[var(--text-primary)] underline-offset-4 transition-colors hover:text-[var(--accent)] hover:underline"
+                  >
                     {item.company}
                   </a>
                 ) : (
-                  <span className="text-sm text-[var(--text-primary)]">{item.company}</span>
+                  <span className="text-sm text-[var(--text-primary)]">
+                    {item.company}
+                  </span>
                 )}
               </div>
             </div>
 
+            {/* Right column: role + bullets */}
             <div>
-              <h3 className="font-display text-2xl italic md:text-3xl">{item.role}</h3>
+              <h3 className="font-display text-2xl italic md:text-3xl">
+                {item.role}
+              </h3>
               <ul className="mt-2 space-y-1 text-sm text-[var(--text-muted)]">
                 {item.bullets.map((bullet) => (
-                  <li key={bullet}>- {bullet}</li>
+                  <li key={bullet} className="flex gap-2">
+                    <span className="mt-0.5 text-[var(--accent)] opacity-50">
+                      —
+                    </span>
+                    <span>{bullet}</span>
+                  </li>
                 ))}
               </ul>
             </div>

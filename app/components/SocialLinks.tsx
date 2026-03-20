@@ -6,23 +6,45 @@ import { siteConfig } from "@/content/config";
 
 function FarcasterIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden>
-      <path d="M4 4h16v16H4z" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M8 9h8M8 13h8M8 17h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    <svg
+      viewBox="0 0 1000 1000"
+      className="h-6 w-6"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M257.778 155.556H742.222V844.445H671.111V528.889H670.414C662.554 441.677 589.258 373.333 500 373.333C410.742 373.333 337.446 441.677 329.586 528.889H328.889V844.445H257.778V155.556Z" />
+      <path d="M128.889 253.333L157.778 351.111H182.222V746.667C169.949 746.667 160 756.616 160 768.889V795.556H155.556C143.283 795.556 133.333 805.505 133.333 817.778V844.445H382.222V817.778C382.222 805.505 372.273 795.556 360 795.556H355.556V768.889C355.556 756.616 345.606 746.667 333.333 746.667H306.667V253.333H128.889Z" />
+      <path d="M693.333 746.667C681.06 746.667 671.111 756.616 671.111 768.889V795.556H666.667C654.394 795.556 644.444 805.505 644.444 817.778V844.445H893.333V817.778C893.333 805.505 883.384 795.556 871.111 795.556H866.667V768.889C866.667 756.616 856.717 746.667 844.444 746.667V351.111H868.889L897.778 253.333H720V746.667H693.333Z" />
     </svg>
   );
 }
 
-export function SocialLinks() {
-  const links = [
-    { href: siteConfig.social.twitter, icon: <FaXTwitter className="h-6 w-6" />, label: "Twitter" },
-    { href: siteConfig.social.github, icon: <FaGithub className="h-6 w-6" />, label: "GitHub" },
-    { href: siteConfig.social.linkedin, icon: <FaLinkedin className="h-6 w-6" />, label: "LinkedIn" },
-    { href: siteConfig.social.farcaster, icon: <FarcasterIcon />, label: "Farcaster" },
-  ];
+const links = [
+  {
+    href: siteConfig.social.twitter,
+    icon: <FaXTwitter className="h-5 w-5" />,
+    label: "Twitter / X",
+  },
+  {
+    href: siteConfig.social.github,
+    icon: <FaGithub className="h-5 w-5" />,
+    label: "GitHub",
+  },
+  {
+    href: siteConfig.social.linkedin,
+    icon: <FaLinkedin className="h-5 w-5" />,
+    label: "LinkedIn",
+  },
+  {
+    href: siteConfig.social.farcaster,
+    icon: <FarcasterIcon />,
+    label: "Farcaster",
+  },
+];
 
+export function SocialLinks() {
   return (
-    <div className="flex flex-wrap gap-5 py-2">
+    <div className="flex flex-wrap gap-6 py-2">
       {links.map((link) => (
         <motion.a
           key={link.label}
@@ -30,9 +52,9 @@ export function SocialLinks() {
           target="_blank"
           rel="noreferrer"
           aria-label={link.label}
-          whileHover={{ scale: 1.2 }}
-          transition={{ duration: 0.16 }}
-          className="text-[var(--text-primary)] transition-colors hover:text-[var(--accent)]"
+          whileHover={{ scale: 1.15 }}
+          transition={{ duration: 0.15 }}
+          className="text-[var(--text-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
         >
           {link.icon}
         </motion.a>

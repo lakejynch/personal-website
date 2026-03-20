@@ -14,9 +14,9 @@ const config: Config = {
         accent2: "var(--accent-2)",
       },
       fontFamily: {
-        display: ["var(--font-playfair-display)"],
-        mono: ["var(--font-dm-mono)"],
-        meta: ["var(--font-space-mono)"],
+        display: ["var(--font-display)"],
+        mono: ["var(--font-mono)"],
+        meta: ["var(--font-meta)"],
       },
     },
   },
