@@ -1,0 +1,104 @@
+:root {
+  --bg: #0a0a08;
+  --surface: #111110;
+  --surface-hover: #1a1a17;
+  --border: #2a2a26;
+  --text-primary: #f0ede4;
+  --text-muted: #7a7a70;
+  --accent: #e8ff47;
+  --accent-2: #ff6b35;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: none;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: var(--font-dm-mono);
+  line-height: 1.5;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+}
+
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.hero-texture {
+  background-image:
+    linear-gradient(120deg, rgba(240, 237, 228, 0.95), rgba(240, 237, 228, 0.65)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.45'/%3E%3C/svg%3E");
+  background-size: cover;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.meta-label {
+  font-family: var(--font-space-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.675rem;
+  color: var(--text-muted);
+}
+
+.pulse-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: #5cff8d;
+  box-shadow: 0 0 0 rgba(92, 255, 141, 0.5);
+  animation: pulse 1.8s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(92, 255, 141, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(92, 255, 141, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(92, 255, 141, 0);
+  }
+}
+
+dialog {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  max-width: min(860px, 92vw);
+  width: 100%;
+  padding: 0;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.72);
+}
