@@ -21,16 +21,18 @@ export function SectionWrapper({ sectionKey, index, title, children }: Props) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="py-10"
+      className="py-12"
     >
       <hr />
-      <div className="flex items-center gap-4 py-4">
-        <span className="font-meta text-xs text-[var(--text-muted)]">{index}</span>
+      <div className="flex items-center gap-4 pb-6 pt-4">
+        <span className="font-meta text-xs text-[var(--text-muted)]">
+          {index}
+        </span>
         <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text-muted)]">
           {title}
         </h2>
       </div>
-      <div>{children}</div>
+      {children}
     </motion.section>
   );
 }
