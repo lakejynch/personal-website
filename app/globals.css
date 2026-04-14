@@ -1,16 +1,13 @@
-:root {
-  --bg: #0a0a08;
-  --surface: #111110;
-  --surface-hover: #1a1a17;
-  --border: #2a2a26;
-  --text-primary: #f0ede4;
-  --text-muted: #7a7a70;
-  --accent: #e8ff47;
-  --accent-2: #ff6b35;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  --font-display: "Playfair Display", "Georgia", "Times New Roman", serif;
-  --font-mono: "DM Mono", "Menlo", "Monaco", "Consolas", monospace;
-  --font-meta: "Space Mono", "Menlo", "Monaco", "Consolas", monospace;
+:root {
+  --bg: #000000;
+  --text: #ffffff;
+  --text-muted: #666666;
+  --border: #ff3333;
+  --border-muted: #333333;
 }
 
 *,
@@ -28,114 +25,56 @@ body {
 
 body {
   background: var(--bg);
-  color: var(--text-primary);
-  font-family: var(--font-mono);
+  color: var(--text);
+  font-family: Menlo, Monaco, monospace;
+  font-size: 14px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.03;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+/* Terminal box with red border and label */
+.terminal-box {
+  border: 1px solid var(--border);
+  position: relative;
 }
 
-/* Custom cursor — desktop only */
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
-
-hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 0;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-/* Hero text with grain texture through letterforms */
-.hero-texture {
-  background-image:
-    linear-gradient(120deg, rgba(240, 237, 228, 0.95), rgba(240, 237, 228, 0.65)),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)' opacity='0.45'/%3E%3C/svg%3E");
-  background-size: cover;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-/* Meta label utility */
-.meta-label {
-  font-family: var(--font-meta);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.675rem;
+.terminal-box-label {
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  background: var(--bg);
+  padding: 0 8px;
+  font-size: 12px;
   color: var(--text-muted);
 }
 
-/* Pulse dot for active/live indicators */
-.pulse-dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: #5cff8d;
-  box-shadow: 0 0 0 rgba(92, 255, 141, 0.5);
-  animation: pulse 1.8s ease-out infinite;
+/* Avatar */
+.avatar {
+  width: 64px;
+  height: 64px;
+  border: 1px solid var(--border);
   flex-shrink: 0;
 }
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(92, 255, 141, 0.45);
-  }
-  70% {
-    box-shadow: 0 0 0 8px rgba(92, 255, 141, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(92, 255, 141, 0);
-  }
+/* Logo placeholder */
+.logo-placeholder {
+  width: 40px;
+  height: 40px;
+  border: 1px dashed var(--border-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: 14px;
 }
 
-/* Dialog styling */
-dialog {
+/* Work logo */
+.work-logo {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  object-fit: contain;
   border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text-primary);
-  max-width: min(860px, 92vw);
-  width: 100%;
-  padding: 0;
-  border-radius: 4px;
-}
-
-dialog::backdrop {
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-}
-
-/* Scrollbar styling */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--border);
-  border-radius: 3px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--text-muted);
+  padding: 4px;
 }
