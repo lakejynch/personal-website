@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jake Lynch</title>
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #ffffff;
+      --text-muted: #666666;
+      --border: #ff3333;
+      --border-muted: #333333;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      min-height: 100%;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Menlo, Monaco, monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--border);
+    }
+
+    main {
+      min-height: 100vh;
+      padding: 32px;
+    }
+
+    .container {
+      max-width: 672px;
+      margin: 0 auto;
+    }
+
+    .terminal-box {
+      border: 1px solid var(--border);
+      position: relative;
+      padding: 24px;
+    }
+
+    .terminal-box + .terminal-box {
+      margin-top: 24px;
+    }
+
+    .terminal-box-label {
+      position: absolute;
+      top: -10px;
+      left: 12px;
+      background: var(--bg);
+      padding: 0 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+
+    .work-logo {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      object-fit: contain;
+      border: 1px solid var(--border);
+      padding: 4px;
+    }
+
+    .profile {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    .profile-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .profile-info h1 {
+      font-size: 20px;
+      font-weight: normal;
+    }
+
+    .profile-info p {
+      color: var(--text-muted);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      font-size: 14px;
+    }
+
+    .color-picker {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 24px 0;
+      font-size: 12px;
+    }
+
+    .color-picker button {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: inherit;
+      cursor: pointer;
+    }
+
+    .color-picker button:hover {
+      opacity: 0.8;
+    }
+
+    .color-picker button.active {
+      color: var(--border);
+    }
+
+    .work-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .work-item:hover {
+      opacity: 0.8;
+    }
+
+    .work-item + .work-item {
+      margin-top: 16px;
+    }
+
+    .work-item h2 {
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    .work-item p {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    .work-note {
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 16px;
+    }
+
+    .games-list, .writing-list {
+      list-style: none;
+    }
+
+    .games-list li {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .games-list span {
+      color: var(--text-muted);
+      margin-right: 8px;
+    }
+
+    .writing-list li {
+      font-size: 14px;
+      line-height: 2;
+    }
+
+    .writing-list span {
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="container">
+      <!-- Profile Section -->
+      <div class="terminal-box">
+        <span class="terminal-box-label">profile</span>
+        <div class="profile">
+          <img src="public/pfp/pfp.jpg" alt="Jake Lynch" class="avatar">
+          <div class="profile-info">
+            <h1>Jake Lynch</h1>
+            <p>Aspiring chef. Terrible writer. Optimistic founder. Boston sports fan.</p>
+            <div class="social-links">
+              <a href="https://x.com/jakelynch" target="_blank" rel="noopener noreferrer">x</a>
+              <a href="https://github.com/lakejynch" target="_blank" rel="noopener noreferrer">github</a>
+              <a href="https://www.linkedin.com/in/jake-lynch/" target="_blank" rel="noopener noreferrer">linkedin</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color Picker -->
+      <div class="color-picker">
+        <button class="active" data-color="#ff3333">R</button>
+        <button data-color="#ff8c00">O</button>
+        <button data-color="#ffd700">Y</button>
+        <button data-color="#33cc33">G</button>
+        <button data-color="#3399ff">B</button>
+        <button data-color="#8b5cf6">I</button>
+        <button data-color="#ee82ee">V</button>
+      </div>
+
+      <!-- Work Section -->
+      <div class="terminal-box">
+        <span class="terminal-box-label">work</span>
+
+        <a href="https://x.com/jakelynch/status/2034036890840797290" target="_blank" rel="noopener noreferrer" class="work-item">
+          <img src="public/logos/welikesports.png" alt="WeLikeSports" class="work-logo">
+          <div>
+            <h2>Founder @ WeLikeSports *</h2>
+            <p>Building the future of sports and finance.</p>
+          </div>
+        </a>
+
+        <div class="work-item">
+          <img src="public/logos/l1d.svg" alt="L1D" class="work-logo">
+          <div>
+            <h2>Investment Partner @ L1D</h2>
+            <p>Invested in consumer, defi and funds.</p>
+          </div>
+        </div>
+
+        <div class="work-item">
+          <img src="public/logos/cantina.svg" alt="Cantina" class="work-logo">
+          <div>
+            <h2>Cofounder @ Spearbit (Cantina)</h2>
+            <p>Building scalable security solutions for crypto and beyond.</p>
+          </div>
+        </div>
+
+        <p class="work-note">* current</p>
+      </div>
+
+      <!-- Games Section -->
+      <div class="terminal-box">
+        <span class="terminal-box-label">games</span>
+        <ul class="games-list">
+          <li><span>1999</span> Age of Empires 2</li>
+          <li><span>2002</span> Warcraft 3</li>
+          <li><span>2004</span> Halo 2</li>
+          <li><span>2004</span> World of Warcraft</li>
+          <li><span>2006</span> Gears of War</li>
+          <li><span>2008</span> GTA 4</li>
+          <li><span>2008</span> Fable 2</li>
+          <li><span>2012</span> CoD Black Ops 2</li>
+          <li><span>2016</span> Overwatch</li>
+          <li><span>2017</span> Zelda Breath of the Wild</li>
+          <li><span>2017</span> Fortnite</li>
+          <li><span>2018</span> Super Smash Bros Ultimate</li>
+          <li><span>2021</span> Valheim</li>
+          <li><span>2023</span> Dark and Darker</li>
+        </ul>
+      </div>
+
+      <!-- Writing Section -->
+      <div class="terminal-box">
+        <span class="terminal-box-label">writing</span>
+        <ul class="writing-list">
+          <li><span>&gt; </span><a href="https://linkedin.com/pulse/building-something-new-jake-lynch-fbkue/" target="_blank" rel="noopener noreferrer">Building something new</a></li>
+          <li><span>&gt; </span><a href="https://x.com/jakelynch/status/1993195362996436999" target="_blank" rel="noopener noreferrer">Late Night Thoughts on the Future of DeFi</a></li>
+          <li><span>&gt; </span><a href="https://x.com/jakelynch/status/1980987850842644740" target="_blank" rel="noopener noreferrer">TVL: Total Value Lost</a></li>
+          <li><span>&gt; </span><a href="https://x.com/jakelynch/status/1929531670471839987" target="_blank" rel="noopener noreferrer">The Right Way to TGE</a></li>
+          <li><span>&gt; </span><a href="https://x.com/jakelynch/status/1890352598835724382" target="_blank" rel="noopener noreferrer">These violent delights do indeed have violent ends</a></li>
+          <li><span>&gt; </span><a href="https://x.com/jakelynch/status/1866203097921675423" target="_blank" rel="noopener noreferrer">On raising capital from VCs</a></li>
+          <li><span>&gt; </span><a href="https://x.com/jakelynch/status/1851634307049062685" target="_blank" rel="noopener noreferrer">My Solana Checklist</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll('.color-picker button');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        buttons.forEach(b => b.classList.remove('active'));
+
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        // Update CSS variable
+        const color = button.dataset.color;
+        document.documentElement.style.setProperty('--border', color);
+        button.style.color = color;
+      });
+    });
+  </script>
+</body>
+</html>
